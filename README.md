@@ -2,8 +2,8 @@
 Base Activity and Fragment for android.
 
 ## Description
-Output log of in and out of onXXXX method in Activity and Fragment.
-Using this will help you to understand the life cycle of Activity and Fragment.
+Output log of in and out of onXXXX method in Activity and Fragment.  
+Using this will help you to understand the life cycle of Activity and Fragment.  
 It is also useful for discovering when some kind of processing is in progress after Activity or Fragment is finished.
 
 ## License

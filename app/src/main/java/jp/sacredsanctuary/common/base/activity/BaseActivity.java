@@ -1,11 +1,22 @@
 /*
- * Copyright (C) 2016 Sacred Sanctuary Inc.
+ * Copyright (C) 2018 Sacred Sanctuary Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 /**
  * @file    BaseActivity.java
- * @author  New Making          2016.09.01  LUNA
  */
-package jp.sacredsanctuary.baseactivity.activity;
+package jp.sacredsanctuary.common.base.activity;
 
 import android.app.Activity;
 import android.app.Application;
@@ -20,6 +31,7 @@ import android.app.assist.AssistContent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -30,9 +42,11 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StyleRes;
 import android.util.AttributeSet;
 import android.view.ActionMode;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.KeyEvent;
 import android.view.KeyboardShortcutGroup;
 import android.view.Menu;
@@ -46,7 +60,7 @@ import android.widget.AdapterView;
 
 import java.util.List;
 
-import jp.sacredsanctuary.baseactivity.util.LogUtil;
+import jp.sacredsanctuary.common.util.LogUtil;
 
 
 /**
@@ -55,7 +69,6 @@ import jp.sacredsanctuary.baseactivity.util.LogUtil;
  * @author  New Making          2016.09.01  LUNA
  */
 public class BaseActivity extends Activity {
-    private static final String TAG = LogUtil.TAG;
     private final String CLASS_NAME;
 
     /**
@@ -104,9 +117,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreate() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreate() [I N] ");
         super.onCreate(savedInstanceState);
-        LogUtil.V(TAG, CLASS_NAME, "onCreate() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreate() [OUT] ");
     }
 
     /**
@@ -131,10 +144,10 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState,
-                         @Nullable PersistableBundle persistentState) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreate() [I N] ");
+            @Nullable PersistableBundle persistentState) {
+        LogUtil.V(CLASS_NAME, "onCreate() [I N] ");
         super.onCreate(savedInstanceState, persistentState);
-        LogUtil.V(TAG, CLASS_NAME, "onCreate() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreate() [OUT] ");
     }
 
     /**
@@ -159,9 +172,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        LogUtil.V(TAG, CLASS_NAME, "onRestoreInstanceState() [I N] ");
+        LogUtil.V(CLASS_NAME, "onRestoreInstanceState() [I N] ");
         super.onRestoreInstanceState(savedInstanceState);
-        LogUtil.V(TAG, CLASS_NAME, "onRestoreInstanceState() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onRestoreInstanceState() [OUT] ");
     }
 
     /**
@@ -187,10 +200,10 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState,
-                                       PersistableBundle persistentState) {
-        LogUtil.V(TAG, CLASS_NAME, "onRestoreInstanceState() [I N] ");
+            PersistableBundle persistentState) {
+        LogUtil.V(CLASS_NAME, "onRestoreInstanceState() [I N] ");
         super.onRestoreInstanceState(savedInstanceState, persistentState);
-        LogUtil.V(TAG, CLASS_NAME, "onRestoreInstanceState() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onRestoreInstanceState() [OUT] ");
     }
 
     /**
@@ -211,9 +224,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        LogUtil.V(TAG, CLASS_NAME, "onPostCreate() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPostCreate() [I N] ");
         super.onPostCreate(savedInstanceState);
-        LogUtil.V(TAG, CLASS_NAME, "onPostCreate() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPostCreate() [OUT] ");
     }
 
     /**
@@ -227,11 +240,12 @@ public class BaseActivity extends Activity {
      *
      * @see #onCreate
      */
+    @Override
     public void onPostCreate(@Nullable Bundle savedInstanceState,
-                             @Nullable PersistableBundle persistentState) {
-        LogUtil.V(TAG, CLASS_NAME, "onPostCreate() [I N] ");
+            @Nullable PersistableBundle persistentState) {
+        LogUtil.V(CLASS_NAME, "onPostCreate() [I N] ");
         super.onPostCreate(savedInstanceState, persistentState);
-        LogUtil.V(TAG, CLASS_NAME, "onPostCreate() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPostCreate() [OUT] ");
     }
 
     /**
@@ -250,9 +264,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onStart() {
-        LogUtil.V(TAG, CLASS_NAME, "onStart() [I N] ");
+        LogUtil.V(CLASS_NAME, "onStart() [I N] ");
         super.onStart();
-        LogUtil.V(TAG, CLASS_NAME, "onStart() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onStart() [OUT] ");
     }
 
     /**
@@ -278,9 +292,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onRestart() {
-        LogUtil.V(TAG, CLASS_NAME, "onRestart() [I N] ");
+        LogUtil.V(CLASS_NAME, "onRestart() [I N] ");
         super.onRestart();
-        LogUtil.V(TAG, CLASS_NAME, "onRestart() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onRestart() [OUT] ");
     }
 
     /**
@@ -292,9 +306,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onStateNotSaved() {
-        LogUtil.V(TAG, CLASS_NAME, "onStateNotSaved() [I N] ");
+        LogUtil.V(CLASS_NAME, "onStateNotSaved() [I N] ");
         super.onStateNotSaved();
-        LogUtil.V(TAG, CLASS_NAME, "onStateNotSaved() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onStateNotSaved() [OUT] ");
     }
 
     /**
@@ -320,9 +334,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onResume() {
-        LogUtil.V(TAG, CLASS_NAME, "onResume() [I N] ");
+        LogUtil.V(CLASS_NAME, "onResume() [I N] ");
         super.onResume();
-        LogUtil.V(TAG, CLASS_NAME, "onResume() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onResume() [OUT] ");
     }
 
     /**
@@ -340,9 +354,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onPostResume() {
-        LogUtil.V(TAG, CLASS_NAME, "onPostResume() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPostResume() [I N] ");
         super.onPostResume();
-        LogUtil.V(TAG, CLASS_NAME, "onPostResume() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPostResume() [OUT] ");
     }
 
     /**
@@ -352,9 +366,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onLocalVoiceInteractionStarted() {
-        LogUtil.V(TAG, CLASS_NAME, "onLocalVoiceInteractionStarted() [I N] ");
+        LogUtil.V(CLASS_NAME, "onLocalVoiceInteractionStarted() [I N] ");
         super.onLocalVoiceInteractionStarted();
-        LogUtil.V(TAG, CLASS_NAME, "onLocalVoiceInteractionStarted() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onLocalVoiceInteractionStarted() [OUT] ");
     }
 
     /**
@@ -365,9 +379,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onLocalVoiceInteractionStopped() {
-        LogUtil.V(TAG, CLASS_NAME, "onLocalVoiceInteractionStopped() [I N] ");
+        LogUtil.V(CLASS_NAME, "onLocalVoiceInteractionStopped() [I N] ");
         super.onLocalVoiceInteractionStopped();
-        LogUtil.V(TAG, CLASS_NAME, "onLocalVoiceInteractionStopped() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onLocalVoiceInteractionStopped() [OUT] ");
     }
 
     /**
@@ -393,9 +407,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     protected void onNewIntent(Intent intent) {
-        LogUtil.V(TAG, CLASS_NAME, "onNewIntent() [I N] ");
+        LogUtil.V(CLASS_NAME, "onNewIntent() [I N] ");
         super.onNewIntent(intent);
-        LogUtil.V(TAG, CLASS_NAME, "onNewIntent() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onNewIntent() [OUT] ");
     }
 
     /**
@@ -445,9 +459,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        LogUtil.V(TAG, CLASS_NAME, "onSaveInstanceState() [I N] ");
+        LogUtil.V(CLASS_NAME, "onSaveInstanceState() [I N] ");
         super.onSaveInstanceState(outState);
-        LogUtil.V(TAG, CLASS_NAME, "onSaveInstanceState() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onSaveInstanceState() [OUT] ");
     }
 
     /**
@@ -467,9 +481,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        LogUtil.V(TAG, CLASS_NAME, "onSaveInstanceState() [I N] ");
+        LogUtil.V(CLASS_NAME, "onSaveInstanceState() [I N] ");
         super.onSaveInstanceState(outState, outPersistentState);
-        LogUtil.V(TAG, CLASS_NAME, "onSaveInstanceState() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onSaveInstanceState() [OUT] ");
     }
 
     /**
@@ -513,9 +527,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onPause() {
-        LogUtil.V(TAG, CLASS_NAME, "onPause() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPause() [I N] ");
         super.onPause();
-        LogUtil.V(TAG, CLASS_NAME, "onPause() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPause() [OUT] ");
     }
 
     /**
@@ -535,9 +549,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     protected void onUserLeaveHint() {
-        LogUtil.V(TAG, CLASS_NAME, "onUserLeaveHint() [I N] ");
+        LogUtil.V(CLASS_NAME, "onUserLeaveHint() [I N] ");
         super.onUserLeaveHint();
-        LogUtil.V(TAG, CLASS_NAME, "onUserLeaveHint() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onUserLeaveHint() [OUT] ");
     }
 
     /**
@@ -562,9 +576,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onCreateThumbnail(Bitmap outBitmap, Canvas canvas) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateThumbnail() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreateThumbnail() [I N] ");
         boolean ret = super.onCreateThumbnail(outBitmap, canvas);
-        LogUtil.V(TAG, CLASS_NAME, "onCreateThumbnail() [OUT] ret:" + ret);
+        LogUtil.V(CLASS_NAME, "onCreateThumbnail() [OUT] ret:" + ret);
         return ret;
     }
 
@@ -588,9 +602,9 @@ public class BaseActivity extends Activity {
     @Nullable
     @Override
     public CharSequence onCreateDescription() {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateDescription() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreateDescription() [I N] ");
         CharSequence charSequence = super.onCreateDescription();
-        LogUtil.V(TAG, CLASS_NAME, "onCreateDescription() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreateDescription() [OUT] ");
         return charSequence;
     }
 
@@ -607,9 +621,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onProvideAssistData(Bundle data) {
-        LogUtil.V(TAG, CLASS_NAME, "onProvideAssistData() [I N] ");
+        LogUtil.V(CLASS_NAME, "onProvideAssistData() [I N] ");
         super.onProvideAssistData(data);
-        LogUtil.V(TAG, CLASS_NAME, "onProvideAssistData() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onProvideAssistData() [OUT] ");
     }
 
     /**
@@ -633,17 +647,17 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onProvideAssistContent(AssistContent outContent) {
-        LogUtil.V(TAG, CLASS_NAME, "onProvideAssistContent() [I N] ");
+        LogUtil.V(CLASS_NAME, "onProvideAssistContent() [I N] ");
         super.onProvideAssistContent(outContent);
-        LogUtil.V(TAG, CLASS_NAME, "onProvideAssistContent() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onProvideAssistContent() [OUT] ");
     }
 
     @Override
     public void onProvideKeyboardShortcuts(
             List<KeyboardShortcutGroup> data, Menu menu, int deviceId) {
-        LogUtil.V(TAG, CLASS_NAME, "onProvideKeyboardShortcuts() [I N] ");
+        LogUtil.V(CLASS_NAME, "onProvideKeyboardShortcuts() [I N] ");
         super.onProvideKeyboardShortcuts(data, menu, deviceId);
-        LogUtil.V(TAG, CLASS_NAME, "onProvideKeyboardShortcuts() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onProvideKeyboardShortcuts() [OUT] ");
     }
 
     /**
@@ -663,9 +677,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onStop() {
-        LogUtil.V(TAG, CLASS_NAME, "onStop() [I N] ");
+        LogUtil.V(CLASS_NAME, "onStop() [I N] ");
         super.onStop();
-        LogUtil.V(TAG, CLASS_NAME, "onStop() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onStop() [OUT] ");
     }
 
     /**
@@ -699,9 +713,81 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     protected void onDestroy() {
-        LogUtil.V(TAG, CLASS_NAME, "onDestroy() [I N] ");
+        LogUtil.V(CLASS_NAME, "onDestroy() [I N] ");
         super.onDestroy();
-        LogUtil.V(TAG, CLASS_NAME, "onDestroy() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onDestroy() [OUT] ");
+    }
+
+    /**
+     * Called by the system when the activity changes from fullscreen mode to multi-window mode and
+     * visa-versa. This method provides the same configuration that will be sent in the following
+     * {@link #onConfigurationChanged(Configuration)} call after the activity enters this mode.
+     *
+     * @see android.R.attr#resizeableActivity
+     *
+     * @param isInMultiWindowMode True if the activity is in multi-window mode.
+     * @param newConfig The new configuration of the activity with the state
+     *                  {@param isInMultiWindowMode}.
+     */
+    @Override
+    public void onMultiWindowModeChanged(boolean isInMultiWindowMode, Configuration newConfig) {
+        LogUtil.V(CLASS_NAME, "onMultiWindowModeChanged() [I N] ");
+        super.onMultiWindowModeChanged(isInMultiWindowMode, newConfig);
+        LogUtil.V(CLASS_NAME, "onMultiWindowModeChanged() [OUT] ");
+    }
+
+    /**
+     * Called by the system when the activity changes from fullscreen mode to multi-window mode and
+     * visa-versa.
+     *
+     * @see android.R.attr#resizeableActivity
+     *
+     * @param isInMultiWindowMode True if the activity is in multi-window mode.
+     *
+     * @deprecated Use {@link #onMultiWindowModeChanged(boolean, Configuration)} instead.
+     */
+    @Deprecated
+    @Override
+    public void onMultiWindowModeChanged(boolean isInMultiWindowMode) {
+        LogUtil.V(CLASS_NAME, "onMultiWindowModeChanged() [I N] ");
+        super.onMultiWindowModeChanged(isInMultiWindowMode);
+        LogUtil.V(CLASS_NAME, "onMultiWindowModeChanged() [OUT] ");
+    }
+
+    /**
+     * Called by the system when the activity changes to and from picture-in-picture mode. This
+     * method provides the same configuration that will be sent in the following
+     * {@link #onConfigurationChanged(Configuration)} call after the activity enters this mode.
+     *
+     * @see android.R.attr#supportsPictureInPicture
+     *
+     * @param isInPictureInPictureMode True if the activity is in picture-in-picture mode.
+     * @param newConfig The new configuration of the activity with the state
+     *                  {@param isInPictureInPictureMode}.
+     */
+    @Override
+    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode,
+            Configuration newConfig) {
+        LogUtil.V(CLASS_NAME, "onPictureInPictureModeChanged() [I N] ");
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode, newConfig);
+        LogUtil.V(CLASS_NAME, "onPictureInPictureModeChanged() [OUT] ");
+    }
+
+    /**
+     * Called by the system when the activity changes to and from picture-in-picture mode.
+     *
+     * @see android.R.attr#supportsPictureInPicture
+     *
+     * @param isInPictureInPictureMode True if the activity is in picture-in-picture mode.
+     *
+     * @deprecated Use {@link #onPictureInPictureModeChanged(boolean, Configuration)} instead.
+     */
+    @Deprecated
+    @Override
+    public void onPictureInPictureModeChanged(boolean isInPictureInPictureMode) {
+        LogUtil.V(CLASS_NAME, "onPictureInPictureModeChanged() [I N] ");
+        super.onPictureInPictureModeChanged(isInPictureInPictureMode);
+        LogUtil.V(CLASS_NAME, "onPictureInPictureModeChanged() [OUT] ");
     }
 
     /**
@@ -722,9 +808,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        LogUtil.V(TAG, CLASS_NAME, "onConfigurationChanged() [I N] ");
+        LogUtil.V(CLASS_NAME, "onConfigurationChanged() [I N] ");
         super.onConfigurationChanged(newConfig);
-        LogUtil.V(TAG, CLASS_NAME, "onConfigurationChanged() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onConfigurationChanged() [OUT] ");
     }
 
     /**
@@ -772,33 +858,33 @@ public class BaseActivity extends Activity {
      * guarantee for {@link android.os.AsyncTask#doInBackground} since that is
      * running in a separate thread.)
      *
-     * @return Return any Object holding the desired state to propagate to the
-     * next activity instance.
-     *
-     * @deprecated Use the new {@link Fragment} API
+     * <p><strong>Note:</strong> For most cases you should use the {@link Fragment} API
      * {@link Fragment#setRetainInstance(boolean)} instead; this is also
-     * available on older platforms through the Android compatibility package.
+     * available on older platforms through the Android support libraries.
+     *
+     * @return any Object holding the desired state to propagate to the
+     *         next activity instance
      */
     @Override
     public Object onRetainNonConfigurationInstance() {
-        LogUtil.V(TAG, CLASS_NAME, "onRetainNonConfigurationInstance() [I N] ");
+        LogUtil.V(CLASS_NAME, "onRetainNonConfigurationInstance() [I N] ");
         Object object = super.onRetainNonConfigurationInstance();
-        LogUtil.V(TAG, CLASS_NAME, "onRetainNonConfigurationInstance() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onRetainNonConfigurationInstance() [OUT] ");
         return object;
     }
 
     @Override
     public void onLowMemory() {
-        LogUtil.V(TAG, CLASS_NAME, "onLowMemory() [I N] ");
+        LogUtil.V(CLASS_NAME, "onLowMemory() [I N] ");
         super.onLowMemory();
-        LogUtil.V(TAG, CLASS_NAME, "onLowMemory() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onLowMemory() [OUT] ");
     }
 
     @Override
     public void onTrimMemory(int level) {
-        LogUtil.V(TAG, CLASS_NAME, "onTrimMemory() [I N] ");
+        LogUtil.V(CLASS_NAME, "onTrimMemory() [I N] ");
         super.onTrimMemory(level);
-        LogUtil.V(TAG, CLASS_NAME, "onTrimMemory() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onTrimMemory() [OUT] ");
     }
 
     /**
@@ -808,9 +894,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onAttachFragment(Fragment fragment) {
-        LogUtil.V(TAG, CLASS_NAME, "onAttachFragment() [I N] ");
+        LogUtil.V(CLASS_NAME, "onAttachFragment() [I N] ");
         super.onAttachFragment(fragment);
-        LogUtil.V(TAG, CLASS_NAME, "onAttachFragment() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onAttachFragment() [OUT] ");
     }
 
     /**
@@ -841,9 +927,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        LogUtil.V(TAG, CLASS_NAME, "onKeyDown() [I N] ");
+        LogUtil.V(CLASS_NAME, "onKeyDown() [I N] ");
         boolean ret = super.onKeyDown(keyCode, event);
-        LogUtil.V(TAG, CLASS_NAME, "onKeyDown() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onKeyDown() [OUT] ");
         return ret;
     }
 
@@ -854,9 +940,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        LogUtil.V(TAG, CLASS_NAME, "onKeyLongPress() [I N] ");
+        LogUtil.V(CLASS_NAME, "onKeyLongPress() [I N] ");
         boolean ret = super.onKeyLongPress(keyCode, event);
-        LogUtil.V(TAG, CLASS_NAME, "onKeyLongPress() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onKeyLongPress() [OUT] ");
         return ret;
     }
 
@@ -877,9 +963,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        LogUtil.V(TAG, CLASS_NAME, "onKeyUp() [I N] ");
+        LogUtil.V(CLASS_NAME, "onKeyUp() [I N] ");
         boolean ret = super.onKeyUp(keyCode, event);
-        LogUtil.V(TAG, CLASS_NAME, "onKeyUp() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onKeyUp() [OUT] ");
         return ret;
     }
 
@@ -890,9 +976,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onKeyMultiple(int keyCode, int repeatCount, KeyEvent event) {
-        LogUtil.V(TAG, CLASS_NAME, "onKeyMultiple() [I N] ");
+        LogUtil.V(CLASS_NAME, "onKeyMultiple() [I N] ");
         boolean ret = super.onKeyMultiple(keyCode, repeatCount, event);
-        LogUtil.V(TAG, CLASS_NAME, "onKeyMultiple() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onKeyMultiple() [OUT] ");
         return ret;
     }
 
@@ -903,9 +989,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onBackPressed() {
-        LogUtil.V(TAG, CLASS_NAME, "onBackPressed() [I N] ");
+        LogUtil.V(CLASS_NAME, "onBackPressed() [I N] ");
         super.onBackPressed();
-        LogUtil.V(TAG, CLASS_NAME, "onBackPressed() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onBackPressed() [OUT] ");
     }
 
     /**
@@ -920,9 +1006,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onKeyShortcut(int keyCode, KeyEvent event) {
-        LogUtil.V(TAG, CLASS_NAME, "onKeyShortcut() [I N] ");
+        LogUtil.V(CLASS_NAME, "onKeyShortcut() [I N] ");
         boolean ret = super.onKeyShortcut(keyCode, event);
-        LogUtil.V(TAG, CLASS_NAME, "onKeyShortcut() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onKeyShortcut() [OUT] ");
         return ret;
     }
 
@@ -938,9 +1024,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        LogUtil.V(TAG, CLASS_NAME, "onTouchEvent() [I N] ");
+        LogUtil.V(CLASS_NAME, "onTouchEvent() [I N] ");
         boolean ret = super.onTouchEvent(event);
-        LogUtil.V(TAG, CLASS_NAME, "onTouchEvent() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onTouchEvent() [OUT] ");
         return ret;
     }
 
@@ -960,9 +1046,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onTrackballEvent(MotionEvent event) {
-        LogUtil.V(TAG, CLASS_NAME, "onTrackballEvent() [I N] ");
+        LogUtil.V(CLASS_NAME, "onTrackballEvent() [I N] ");
         boolean ret = super.onTrackballEvent(event);
-        LogUtil.V(TAG, CLASS_NAME, "onTrackballEvent() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onTrackballEvent() [OUT] ");
         return ret;
     }
 
@@ -993,9 +1079,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onGenericMotionEvent(MotionEvent event) {
-        LogUtil.V(TAG, CLASS_NAME, "onGenericMotionEvent() [I N] ");
+        LogUtil.V(CLASS_NAME, "onGenericMotionEvent() [I N] ");
         boolean ret = super.onGenericMotionEvent(event);
-        LogUtil.V(TAG, CLASS_NAME, "onGenericMotionEvent() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onGenericMotionEvent() [OUT] ");
         return ret;
     }
 
@@ -1020,23 +1106,23 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onUserInteraction() {
-        LogUtil.V(TAG, CLASS_NAME, "onUserInteraction() [I N] ");
+        LogUtil.V(CLASS_NAME, "onUserInteraction() [I N] ");
         super.onUserInteraction();
-        LogUtil.V(TAG, CLASS_NAME, "onUserInteraction() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onUserInteraction() [OUT] ");
     }
 
     @Override
     public void onWindowAttributesChanged(WindowManager.LayoutParams params) {
-        LogUtil.V(TAG, CLASS_NAME, "onWindowAttributesChanged() [I N] ");
+        LogUtil.V(CLASS_NAME, "onWindowAttributesChanged() [I N] ");
         super.onWindowAttributesChanged(params);
-        LogUtil.V(TAG, CLASS_NAME, "onWindowAttributesChanged() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onWindowAttributesChanged() [OUT] ");
     }
 
     @Override
     public void onContentChanged() {
-        LogUtil.V(TAG, CLASS_NAME, "onContentChanged() [I N] ");
+        LogUtil.V(CLASS_NAME, "onContentChanged() [I N] ");
         super.onContentChanged();
-        LogUtil.V(TAG, CLASS_NAME, "onContentChanged() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onContentChanged() [OUT] ");
     }
 
     /**
@@ -1068,9 +1154,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        LogUtil.V(TAG, CLASS_NAME, "onWindowFocusChanged() [I N] ");
+        LogUtil.V(CLASS_NAME, "onWindowFocusChanged() [I N] ");
         super.onWindowFocusChanged(hasFocus);
-        LogUtil.V(TAG, CLASS_NAME, "onWindowFocusChanged() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onWindowFocusChanged() [OUT] ");
     }
 
     /**
@@ -1082,9 +1168,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onAttachedToWindow() {
-        LogUtil.V(TAG, CLASS_NAME, "onAttachedToWindow() [I N] ");
+        LogUtil.V(CLASS_NAME, "onAttachedToWindow() [I N] ");
         super.onAttachedToWindow();
-        LogUtil.V(TAG, CLASS_NAME, "onAttachedToWindow() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onAttachedToWindow() [OUT] ");
     }
 
     /**
@@ -1096,9 +1182,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onDetachedFromWindow() {
-        LogUtil.V(TAG, CLASS_NAME, "onDetachedFromWindow() [I N] ");
+        LogUtil.V(CLASS_NAME, "onDetachedFromWindow() [I N] ");
         super.onDetachedFromWindow();
-        LogUtil.V(TAG, CLASS_NAME, "onDetachedFromWindow() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onDetachedFromWindow() [OUT] ");
     }
 
     /**
@@ -1111,9 +1197,9 @@ public class BaseActivity extends Activity {
     @Nullable
     @Override
     public View onCreatePanelView(int featureId) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreatePanelView() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreatePanelView() [I N] ");
         View view = super.onCreatePanelView(featureId);
-        LogUtil.V(TAG, CLASS_NAME, "onCreatePanelView() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreatePanelView() [OUT] ");
         return view;
     }
 
@@ -1127,9 +1213,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onCreatePanelMenu(int featureId, Menu menu) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreatePanelMenu() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreatePanelMenu() [I N] ");
         boolean ret = super.onCreatePanelMenu(featureId, menu);
-        LogUtil.V(TAG, CLASS_NAME, "onCreatePanelMenu() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreatePanelMenu() [OUT] ");
         return ret;
     }
 
@@ -1144,9 +1230,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onPreparePanel(int featureId, View view, Menu menu) {
-        LogUtil.V(TAG, CLASS_NAME, "onPreparePanel() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPreparePanel() [I N] ");
         boolean ret = super.onPreparePanel(featureId, view, menu);
-        LogUtil.V(TAG, CLASS_NAME, "onPreparePanel() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPreparePanel() [OUT] ");
         return ret;
     }
 
@@ -1157,9 +1243,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
-        LogUtil.V(TAG, CLASS_NAME, "onMenuOpened() [I N] ");
+        LogUtil.V(CLASS_NAME, "onMenuOpened() [I N] ");
         boolean ret = super.onMenuOpened(featureId, menu);
-        LogUtil.V(TAG, CLASS_NAME, "onMenuOpened() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onMenuOpened() [OUT] ");
         return ret;
     }
 
@@ -1174,9 +1260,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        LogUtil.V(TAG, CLASS_NAME, "onMenuItemSelected() [I N] ");
+        LogUtil.V(CLASS_NAME, "onMenuItemSelected() [I N] ");
         boolean ret = super.onMenuItemSelected(featureId, item);
-        LogUtil.V(TAG, CLASS_NAME, "onMenuItemSelected() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onMenuItemSelected() [OUT] ");
         return ret;
     }
 
@@ -1191,9 +1277,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onPanelClosed(int featureId, Menu menu) {
-        LogUtil.V(TAG, CLASS_NAME, "onPanelClosed() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPanelClosed() [I N] ");
         super.onPanelClosed(featureId, menu);
-        LogUtil.V(TAG, CLASS_NAME, "onPanelClosed() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPanelClosed() [OUT] ");
     }
 
     /**
@@ -1226,9 +1312,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateOptionsMenu() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreateOptionsMenu() [I N] ");
         boolean ret = super.onCreateOptionsMenu(menu);
-        LogUtil.V(TAG, CLASS_NAME, "onCreateOptionsMenu() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreateOptionsMenu() [OUT] ");
         return ret;
     }
 
@@ -1252,9 +1338,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        LogUtil.V(TAG, CLASS_NAME, "onPrepareOptionsMenu() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPrepareOptionsMenu() [I N] ");
         boolean ret = super.onPrepareOptionsMenu(menu);
-        LogUtil.V(TAG, CLASS_NAME, "onPrepareOptionsMenu() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPrepareOptionsMenu() [OUT] ");
         return ret;
     }
 
@@ -1278,9 +1364,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        LogUtil.V(TAG, CLASS_NAME, "onOptionsItemSelected() [I N] ");
+        LogUtil.V(CLASS_NAME, "onOptionsItemSelected() [I N] ");
         boolean ret = super.onOptionsItemSelected(item);
-        LogUtil.V(TAG, CLASS_NAME, "onOptionsItemSelected() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onOptionsItemSelected() [OUT] ");
         return ret;
     }
 
@@ -1295,7 +1381,7 @@ public class BaseActivity extends Activity {
      * should override the method {@link #onPrepareNavigateUpTaskStack(TaskStackBuilder)}
      * to supply those arguments.</p>
      *
-     * <p>See <a href="{@docRoot}guide/topics/fundamentals/tasks-and-back-stack.html">Tasks and Back Stack</a>
+     * <p>See <a href="{@docRoot}guide/components/tasks-and-back-stack.html">Tasks and Back Stack</a>
      * from the developer guide and <a href="{@docRoot}design/patterns/navigation.html">Navigation</a>
      * from the design guide for more information about navigating within your app.</p>
      *
@@ -1309,9 +1395,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onNavigateUp() {
-        LogUtil.V(TAG, CLASS_NAME, "onNavigateUp() [I N] ");
+        LogUtil.V(CLASS_NAME, "onNavigateUp() [I N] ");
         boolean ret = super.onNavigateUp();
-        LogUtil.V(TAG, CLASS_NAME, "onNavigateUp() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onNavigateUp() [OUT] ");
         return ret;
     }
 
@@ -1323,9 +1409,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onNavigateUpFromChild(Activity child) {
-        LogUtil.V(TAG, CLASS_NAME, "onNavigateUpFromChild() [I N] ");
+        LogUtil.V(CLASS_NAME, "onNavigateUpFromChild() [I N] ");
         boolean ret = super.onNavigateUpFromChild(child);
-        LogUtil.V(TAG, CLASS_NAME, "onNavigateUpFromChild() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onNavigateUpFromChild() [OUT] ");
         return ret;
     }
 
@@ -1350,9 +1436,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onCreateNavigateUpTaskStack(TaskStackBuilder builder) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateNavigateUpTaskStack() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreateNavigateUpTaskStack() [I N] ");
         super.onCreateNavigateUpTaskStack(builder);
-        LogUtil.V(TAG, CLASS_NAME, "onCreateNavigateUpTaskStack() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreateNavigateUpTaskStack() [OUT] ");
     }
 
     /**
@@ -1369,9 +1455,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onPrepareNavigateUpTaskStack(TaskStackBuilder builder) {
-        LogUtil.V(TAG, CLASS_NAME, "onPrepareNavigateUpTaskStack() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPrepareNavigateUpTaskStack() [I N] ");
         super.onPrepareNavigateUpTaskStack(builder);
-        LogUtil.V(TAG, CLASS_NAME, "onPrepareNavigateUpTaskStack() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPrepareNavigateUpTaskStack() [OUT] ");
     }
 
     /**
@@ -1383,9 +1469,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onOptionsMenuClosed(Menu menu) {
-        LogUtil.V(TAG, CLASS_NAME, "onOptionsMenuClosed() [I N] ");
+        LogUtil.V(CLASS_NAME, "onOptionsMenuClosed() [I N] ");
         super.onOptionsMenuClosed(menu);
-        LogUtil.V(TAG, CLASS_NAME, "onOptionsMenuClosed() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onOptionsMenuClosed() [OUT] ");
     }
 
     /**
@@ -1402,10 +1488,10 @@ public class BaseActivity extends Activity {
      *
      */
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateContextMenu() [I N] ");
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+        LogUtil.V(CLASS_NAME, "onCreateContextMenu() [I N] ");
         super.onCreateContextMenu(menu, v, menuInfo);
-        LogUtil.V(TAG, CLASS_NAME, "onCreateContextMenu() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreateContextMenu() [OUT] ");
     }
 
     /**
@@ -1427,9 +1513,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        LogUtil.V(TAG, CLASS_NAME, "onContextItemSelected() [I N] ");
+        LogUtil.V(CLASS_NAME, "onContextItemSelected() [I N] ");
         boolean ret = super.onContextItemSelected(item);
-        LogUtil.V(TAG, CLASS_NAME, "onContextItemSelected() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onContextItemSelected() [OUT] ");
         return ret;
     }
 
@@ -1442,9 +1528,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onContextMenuClosed(Menu menu) {
-        LogUtil.V(TAG, CLASS_NAME, "onContextMenuClosed() [I N] ");
+        LogUtil.V(CLASS_NAME, "onContextMenuClosed() [I N] ");
         super.onContextMenuClosed(menu);
-        LogUtil.V(TAG, CLASS_NAME, "onContextMenuClosed() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onContextMenuClosed() [OUT] ");
     }
 
     /**
@@ -1453,9 +1539,9 @@ public class BaseActivity extends Activity {
     @Deprecated
     @Override
     protected Dialog onCreateDialog(int id) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateDialog() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreateDialog() [I N] ");
         Dialog dialog = super.onCreateDialog(id);
-        LogUtil.V(TAG, CLASS_NAME, "onCreateDialog() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreateDialog() [OUT] ");
         return dialog;
     }
 
@@ -1496,9 +1582,9 @@ public class BaseActivity extends Activity {
     @Deprecated
     @Override
     protected Dialog onCreateDialog(int id, Bundle args) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateDialog() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreateDialog() [I N] ");
         Dialog dialog = super.onCreateDialog(id, args);
-        LogUtil.V(TAG, CLASS_NAME, "onCreateDialog() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreateDialog() [OUT] ");
         return dialog;
     }
 
@@ -1509,9 +1595,9 @@ public class BaseActivity extends Activity {
     @Deprecated
     @Override
     protected void onPrepareDialog(int id, Dialog dialog) {
-        LogUtil.V(TAG, CLASS_NAME, "onPrepareDialog() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPrepareDialog() [I N] ");
         super.onPrepareDialog(id, dialog);
-        LogUtil.V(TAG, CLASS_NAME, "onPrepareDialog() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPrepareDialog() [OUT] ");
     }
 
     /**
@@ -1541,9 +1627,9 @@ public class BaseActivity extends Activity {
     @Deprecated
     @Override
     protected void onPrepareDialog(int id, Dialog dialog, Bundle args) {
-        LogUtil.V(TAG, CLASS_NAME, "onPrepareDialog() [I N] ");
+        LogUtil.V(CLASS_NAME, "onPrepareDialog() [I N] ");
         super.onPrepareDialog(id, dialog, args);
-        LogUtil.V(TAG, CLASS_NAME, "onPrepareDialog() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onPrepareDialog() [OUT] ");
     }
 
     /**
@@ -1571,9 +1657,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onSearchRequested(@Nullable SearchEvent searchEvent) {
-        LogUtil.V(TAG, CLASS_NAME, "onSearchRequested() [I N] ");
+        LogUtil.V(CLASS_NAME, "onSearchRequested() [I N] ");
         boolean ret = super.onSearchRequested(searchEvent);
-        LogUtil.V(TAG, CLASS_NAME, "onSearchRequested() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onSearchRequested() [OUT] ");
         return ret;
     }
 
@@ -1582,10 +1668,18 @@ public class BaseActivity extends Activity {
      */
     @Override
     public boolean onSearchRequested() {
-        LogUtil.V(TAG, CLASS_NAME, "onSearchRequested() [I N] ");
+        LogUtil.V(CLASS_NAME, "onSearchRequested() [I N] ");
         boolean ret = super.onSearchRequested();
-        LogUtil.V(TAG, CLASS_NAME, "onSearchRequested() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onSearchRequested() [OUT] ");
         return ret;
+    }
+
+    @Override
+    protected void onApplyThemeResource(Resources.Theme theme, @StyleRes int resid,
+                                        boolean first) {
+        LogUtil.V(CLASS_NAME, "onApplyThemeResource() [I N] ");
+        super.onApplyThemeResource(theme, resid, first);
+        LogUtil.V(CLASS_NAME, "onApplyThemeResource() [OUT] ");
     }
 
     /**
@@ -1608,9 +1702,9 @@ public class BaseActivity extends Activity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
             @NonNull int[] grantResults) {
-        LogUtil.V(TAG, CLASS_NAME, "onRequestPermissionsResult() [I N] ");
+        LogUtil.V(CLASS_NAME, "onRequestPermissionsResult() [I N] ");
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        LogUtil.V(TAG, CLASS_NAME, "onRequestPermissionsResult() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onRequestPermissionsResult() [OUT] ");
     }
 
     /**
@@ -1621,9 +1715,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public Uri onProvideReferrer() {
-        LogUtil.V(TAG, CLASS_NAME, "onProvideReferrer() [I N] ");
+        LogUtil.V(CLASS_NAME, "onProvideReferrer() [I N] ");
         Uri uri = super.onProvideReferrer();
-        LogUtil.V(TAG, CLASS_NAME, "onProvideReferrer() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onProvideReferrer() [OUT] ");
         return uri;
     }
 
@@ -1655,9 +1749,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        LogUtil.V(TAG, CLASS_NAME, "onActivityResult() [I N] ");
+        LogUtil.V(CLASS_NAME, "onActivityResult() [I N] ");
         super.onActivityResult(requestCode, resultCode, data);
-        LogUtil.V(TAG, CLASS_NAME, "onActivityResult() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onActivityResult() [OUT] ");
     }
 
     /**
@@ -1680,23 +1774,23 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onActivityReenter(int resultCode, Intent data) {
-        LogUtil.V(TAG, CLASS_NAME, "onActivityReenter() [I N] ");
+        LogUtil.V(CLASS_NAME, "onActivityReenter() [I N] ");
         super.onActivityReenter(resultCode, data);
-        LogUtil.V(TAG, CLASS_NAME, "onActivityReenter() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onActivityReenter() [OUT] ");
     }
 
     @Override
     protected void onTitleChanged(CharSequence title, int color) {
-        LogUtil.V(TAG, CLASS_NAME, "onTitleChanged() [I N] ");
+        LogUtil.V(CLASS_NAME, "onTitleChanged() [I N] ");
         super.onTitleChanged(title, color);
-        LogUtil.V(TAG, CLASS_NAME, "onTitleChanged() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onTitleChanged() [OUT] ");
     }
 
     @Override
     protected void onChildTitleChanged(Activity childActivity, CharSequence title) {
-        LogUtil.V(TAG, CLASS_NAME, "onChildTitleChanged() [I N] ");
+        LogUtil.V(CLASS_NAME, "onChildTitleChanged() [I N] ");
         super.onChildTitleChanged(childActivity, title);
-        LogUtil.V(TAG, CLASS_NAME, "onChildTitleChanged() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onChildTitleChanged() [OUT] ");
     }
 
     /**
@@ -1713,9 +1807,9 @@ public class BaseActivity extends Activity {
     @Nullable
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateView() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreateView() [I N] ");
         View view = super.onCreateView(name, context, attrs);
-        LogUtil.V(TAG, CLASS_NAME, "onCreateView() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreateView() [OUT] ");
         return view;
     }
 
@@ -1731,9 +1825,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreateView() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreateView() [I N] ");
         View view = super.onCreateView(parent, name, context, attrs);
-        LogUtil.V(TAG, CLASS_NAME, "onCreateView() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onCreateView() [OUT] ");
         return view;
     }
 
@@ -1749,14 +1843,17 @@ public class BaseActivity extends Activity {
      * process. Otherwise {@link #onStop()} will be called following return.
      *
      * @see #requestVisibleBehind(boolean)
-     * @see #onBackgroundVisibleBehindChanged(boolean)
+     *
+     * @deprecated This method's functionality is no longer supported as of
+     * {@link android.os.Build.VERSION_CODES#O} and will be removed in a future release.
      */
+    @Deprecated
     @CallSuper
     @Override
     public void onVisibleBehindCanceled() {
-        LogUtil.V(TAG, CLASS_NAME, "onVisibleBehindCanceled() [I N] ");
+        LogUtil.V(CLASS_NAME, "onVisibleBehindCanceled() [I N] ");
         super.onVisibleBehindCanceled();
-        LogUtil.V(TAG, CLASS_NAME, "onVisibleBehindCanceled() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onVisibleBehindCanceled() [OUT] ");
     }
 
     /**
@@ -1766,9 +1863,9 @@ public class BaseActivity extends Activity {
      */
     @Override
     public void onEnterAnimationComplete() {
-        LogUtil.V(TAG, CLASS_NAME, "onEnterAnimationComplete() [I N] ");
+        LogUtil.V(CLASS_NAME, "onEnterAnimationComplete() [I N] ");
         super.onEnterAnimationComplete();
-        LogUtil.V(TAG, CLASS_NAME, "onEnterAnimationComplete() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onEnterAnimationComplete() [OUT] ");
     }
 
     /**
@@ -1785,9 +1882,9 @@ public class BaseActivity extends Activity {
     @Nullable
     @Override
     public ActionMode onWindowStartingActionMode(ActionMode.Callback callback) {
-        LogUtil.V(TAG, CLASS_NAME, "onWindowStartingActionMode() [I N] ");
+        LogUtil.V(CLASS_NAME, "onWindowStartingActionMode() [I N] ");
         ActionMode actionMode = super.onWindowStartingActionMode(callback);
-        LogUtil.V(TAG, CLASS_NAME, "onWindowStartingActionMode() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onWindowStartingActionMode() [OUT] ");
         return actionMode;
     }
 
@@ -1797,9 +1894,9 @@ public class BaseActivity extends Activity {
     @Nullable
     @Override
     public ActionMode onWindowStartingActionMode(ActionMode.Callback callback, int type) {
-        LogUtil.V(TAG, CLASS_NAME, "onWindowStartingActionMode() [I N] ");
+        LogUtil.V(CLASS_NAME, "onWindowStartingActionMode() [I N] ");
         ActionMode actionMode = super.onWindowStartingActionMode(callback, type);
-        LogUtil.V(TAG, CLASS_NAME, "onWindowStartingActionMode() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onWindowStartingActionMode() [OUT] ");
         return actionMode;
     }
 
@@ -1812,9 +1909,9 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     public void onActionModeStarted(ActionMode mode) {
-        LogUtil.V(TAG, CLASS_NAME, "onActionModeStarted() [I N] ");
+        LogUtil.V(CLASS_NAME, "onActionModeStarted() [I N] ");
         super.onActionModeStarted(mode);
-        LogUtil.V(TAG, CLASS_NAME, "onActionModeStarted() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onActionModeStarted() [OUT] ");
     }
 
     /**
@@ -1826,8 +1923,8 @@ public class BaseActivity extends Activity {
     @CallSuper
     @Override
     public void onActionModeFinished(ActionMode mode) {
-        LogUtil.V(TAG, CLASS_NAME, "onActionModeFinished() [I N] ");
+        LogUtil.V(CLASS_NAME, "onActionModeFinished() [I N] ");
         super.onActionModeFinished(mode);
-        LogUtil.V(TAG, CLASS_NAME, "onActionModeFinished() [OUT] ");
+        LogUtil.V(CLASS_NAME, "onActionModeFinished() [OUT] ");
     }
 }

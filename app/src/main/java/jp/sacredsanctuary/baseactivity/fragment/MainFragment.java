@@ -14,7 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import jp.sacredsanctuary.baseactivity.R;
-import jp.sacredsanctuary.baseactivity.util.LogUtil;
+import jp.sacredsanctuary.common.base.fragment.BaseFragment;
+import jp.sacredsanctuary.common.util.LogUtil;
 
 public class MainFragment extends BaseFragment {
     private static final String TAG = LogUtil.TAG;

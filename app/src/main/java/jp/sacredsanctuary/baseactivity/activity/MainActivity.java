@@ -7,17 +7,16 @@
  */
 package jp.sacredsanctuary.baseactivity.activity;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
 import jp.sacredsanctuary.baseactivity.R;
 import jp.sacredsanctuary.baseactivity.fragment.MainFragment;
-import jp.sacredsanctuary.baseactivity.util.LogUtil;
+import jp.sacredsanctuary.common.base.activity.BaseActivity;
+import jp.sacredsanctuary.common.util.LogUtil;
 
 public class MainActivity extends BaseActivity {
-    private static final String TAG = LogUtil.TAG;
     private static final String CLASS_NAME = MainActivity.class.getSimpleName();
 
     public MainActivity() {
@@ -26,7 +25,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LogUtil.V(TAG, CLASS_NAME, "onCreate() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreate() [I N] ");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -36,6 +35,6 @@ public class MainActivity extends BaseActivity {
         MainFragment fragment = new MainFragment();
         fragmentTransaction.add(R.id.fragment_container, fragment, "fragment_main");
         fragmentTransaction.commit();
-        LogUtil.V(TAG, CLASS_NAME, "onCreate() [I N] ");
+        LogUtil.V(CLASS_NAME, "onCreate() [I N] ");
     }
 }

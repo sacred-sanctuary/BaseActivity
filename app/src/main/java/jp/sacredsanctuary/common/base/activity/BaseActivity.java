@@ -36,6 +36,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.CallSuper;
@@ -61,6 +62,8 @@ import android.widget.AdapterView;
 import java.util.List;
 
 import jp.sacredsanctuary.common.util.LogUtil;
+import jp.sacredsanctuary.common.util.PermissionUtils;
+import jp.sacredsanctuary.common.util.Preconditions;
 
 
 /**
@@ -68,7 +71,7 @@ import jp.sacredsanctuary.common.util.LogUtil;
  * @class   BaseActivity
  * @author  New Making          2016.09.01  LUNA
  */
-public class BaseActivity extends Activity {
+public abstract class BaseActivity extends Activity {
     private final String CLASS_NAME;
 
     /**
@@ -336,8 +339,18 @@ public class BaseActivity extends Activity {
     protected void onResume() {
         LogUtil.V(CLASS_NAME, "onResume() [I N] ");
         super.onResume();
+        String[] list = PermissionUtils.getUnauthorizedPermissionList(getBaseContext());
+        if (!Preconditions.isEmpty(list)) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(list, list.length);
+            }
+        } else {
+            resume();
+        }
         LogUtil.V(CLASS_NAME, "onResume() [OUT] ");
     }
+
+    protected abstract void resume();
 
     /**
      * Called when activity resume is complete (after {@link #onResume} has

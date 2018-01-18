@@ -37,4 +37,10 @@ public class MainActivity extends BaseActivity {
         fragmentTransaction.commit();
         LogUtil.V(CLASS_NAME, "onCreate() [I N] ");
     }
+
+    @Override
+    protected void resume() {
+        LogUtil.V(CLASS_NAME, "resume() [I N] ");
+        LogUtil.V(CLASS_NAME, "resume() [OUT] ");
+    }
 }
